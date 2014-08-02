@@ -1,0 +1,25 @@
+<Workspace Version="0.7.1.9068" X="-95.648239347072" Y="36.4931334987122" zoom="1.07974991258409" Description="" Category="" Name="Home">
+  <Elements>
+    <Dynamo.Nodes.DSFunction type="Dynamo.Nodes.DSFunction" guid="0578c4cd-544c-4a46-b8af-a3dbb07dfdda" nickname="Text.FromStringOriginAndScale" x="523" y="340" isVisible="true" isUpstreamVisible="true" lacing="Shortest" assembly="bin\Debug\DynamoText.dll" function="DynamoText.Text.FromStringOriginAndScale@string,Autodesk.DesignScript.Geometry.Point,double" />
+    <Dynamo.Nodes.StringInput type="Dynamo.Nodes.StringInput" guid="94334176-769d-4453-b270-019f297ca006" nickname="String" x="191" y="257.333333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="Mares eat oats.&#xD;&#xA;And does eat oats.&#xD;&#xA;And little lambs eat ivy.&#xD;&#xA;I would eat ivy too, wouldn't you?" />
+    </Dynamo.Nodes.StringInput>
+    <Dynamo.Nodes.DSFunction type="Dynamo.Nodes.DSFunction" guid="10cc7aa8-2e95-4d17-99a7-754d3d21764c" nickname="Point.ByCoordinates" x="245" y="458" isVisible="true" isUpstreamVisible="true" lacing="Shortest" assembly="ProtoGeometry.dll" function="Autodesk.DesignScript.Geometry.Point.ByCoordinates@double,double">
+      <PortInfo index="0" default="True" />
+      <PortInfo index="1" default="True" />
+    </Dynamo.Nodes.DSFunction>
+    <Dynamo.Nodes.DoubleInput type="Dynamo.Nodes.DoubleInput" guid="7960fc65-1b49-4668-b5e9-69cb8f97613f" nickname="Number" x="323" y="608" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="1..10" />
+    </Dynamo.Nodes.DoubleInput>
+    <Dynamo.Nodes.DoubleInput type="Dynamo.Nodes.DoubleInput" guid="9a5f97f8-fac0-4286-b5e3-e4e980c184ae" nickname="Number" x="104.427862451741" y="483.499255574328" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="0..150..#10" />
+    </Dynamo.Nodes.DoubleInput>
+  </Elements>
+  <Connectors>
+    <Dynamo.Models.ConnectorModel start="94334176-769d-4453-b270-019f297ca006" start_index="0" end="0578c4cd-544c-4a46-b8af-a3dbb07dfdda" end_index="0" portType="0" />
+    <Dynamo.Models.ConnectorModel start="10cc7aa8-2e95-4d17-99a7-754d3d21764c" start_index="0" end="0578c4cd-544c-4a46-b8af-a3dbb07dfdda" end_index="1" portType="0" />
+    <Dynamo.Models.ConnectorModel start="7960fc65-1b49-4668-b5e9-69cb8f97613f" start_index="0" end="0578c4cd-544c-4a46-b8af-a3dbb07dfdda" end_index="2" portType="0" />
+    <Dynamo.Models.ConnectorModel start="9a5f97f8-fac0-4286-b5e3-e4e980c184ae" start_index="0" end="10cc7aa8-2e95-4d17-99a7-754d3d21764c" end_index="1" portType="0" />
+  </Connectors>
+  <Notes />
+</Workspace>

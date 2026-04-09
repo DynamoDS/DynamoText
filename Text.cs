@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using Autodesk.DesignScript.Geometry;
@@ -9,20 +11,31 @@ namespace DynamoText
 {
     public static class Text
     {
-        public static IEnumerable<Curve> FromStringOriginAndScale(string text, Point origin, double scale)
+        public static IEnumerable<Curve> FromStringOriginAndScale(
+            string text,
+            Point origin,
+            double scale,
+            string fontFamily = "Arial",
+            bool bold = false,
+            bool italic = false)
         {
             //http://msdn.microsoft.com/en-us/library/ms745816(v=vs.110).aspx
 
             var crvs = new List<Curve>();
 
-            var font = new System.Windows.Media.FontFamily("Arial");
-            var fontStyle = FontStyles.Normal;
-            var fontWeight = FontWeights.Medium;
+            bool fontExists = Fonts.SystemFontFamilies
+                .Any(f => f.Source.Equals(fontFamily, StringComparison.OrdinalIgnoreCase));
+            if (!fontExists)
+            {
+                throw new ArgumentException(
+                    string.Format("Font family \"{0}\" is not installed on this system. " +
+                        "Use Text.GetInstalledFontNames() to list available fonts.", fontFamily));
+            }
 
-            //if (Bold == true) fontWeight = FontWeights.Bold;
-            //if (Italic == true) fontStyle = FontStyles.Italic;
+            var font = new System.Windows.Media.FontFamily(fontFamily);
+            var fontStyle = italic ? FontStyles.Italic : FontStyles.Normal;
+            var fontWeight = bold ? FontWeights.Bold : FontWeights.Medium;
 
-            // Create the formatted text based on the properties set.
             var formattedText = new FormattedText(
                 text,
                 CultureInfo.GetCultureInfo("en-us"),
@@ -33,8 +46,8 @@ namespace DynamoText
                     fontWeight,
                     FontStretches.Normal),
                 1,
-                System.Windows.Media.Brushes.Black // This brush does not matter since we use the geometry of the text. 
-                );
+                System.Windows.Media.Brushes.Black,
+                1.0);
 
             // Build the geometry object that represents the text.
             var textGeometry = formattedText.BuildGeometry(new System.Windows.Point(0, 0));
@@ -69,6 +82,14 @@ namespace DynamoText
             }
 
             return crvs;
+        }
+
+        public static IList<string> GetInstalledFontNames()
+        {
+            return Fonts.SystemFontFamilies
+                .Select(f => f.Source)
+                .OrderBy(n => n, StringComparer.OrdinalIgnoreCase)
+                .ToList();
         }
 
         private static Line LineBetweenPoints(Point origin, double scale, System.Windows.Point a, System.Windows.Point b)

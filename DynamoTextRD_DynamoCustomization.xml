@@ -1,7 +1,7 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <doc>
   <assembly>
-    <name>DynamoText</name>
+    <name>DynamoTextRD</name>
   </assembly>
   <namespaces>
     <namespace name="DynamoText">
@@ -9,6 +9,6 @@
     </namespace>
   </namespaces>
   <classes>
-    <class name="DynamoText.DynamoText.Text" shortname="Text"/>
+    <class name="DynamoText.Text" shortname="Text"/>
   </classes>
 </doc>

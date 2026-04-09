@@ -33,7 +33,9 @@ namespace DynamoText
                     fontWeight,
                     FontStretches.Normal),
                 1,
-                System.Windows.Media.Brushes.Black // This brush does not matter since we use the geometry of the text. 
+                System.Windows.Media.Brushes.Black, // This brush does not matter since we use the geometry of the text.
+                new NumberSubstitution(),
+                1.0
                 );
 
             // Build the geometry object that represents the text.

@@ -1,0 +1,16 @@
+{
+  "extraKnownMarketplaces": {
+    "dynamo-ds-skills": {
+      "source": {
+        "source": "github",
+        "repo": "DynamoDs/skills"
+      },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "dynamo-jira-ticket@dynamo-ds-skills": true,
+    "dynamo-pr-description@dynamo-ds-skills": true,
+    "dynamo-skill-writer@dynamo-ds-skills": true
+  }
+}

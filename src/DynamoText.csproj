@@ -8,6 +8,7 @@
     <AssemblyName>DynamoText</AssemblyName>
     <RootNamespace>DynamoText</RootNamespace>
     <Platforms>x64</Platforms>
+    <OutputPath>..\bin\$(Configuration)\</OutputPath>
 
     <!-- Assembly metadata from AssemblyInfo.cs -->
     <AssemblyTitle>DynamoText</AssemblyTitle>
@@ -30,5 +31,26 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+  <Target Name="CreatePackage" AfterTargets="Build">
+    <PropertyGroup>
+      <RepoRoot>$(MSBuildProjectDirectory)\..</RepoRoot>
+      <PkgPath>$(RepoRoot)\dist\DynamoText</PkgPath>
+    </PropertyGroup>
+
+    <MakeDir Directories="$(PkgPath);$(PkgPath)\bin" />
+
+    <!-- Package manifest -->
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\pkg.json" DestinationFolder="$(PkgPath)" />
+
+    <!-- Assembly -->
+    <Copy SourceFiles="$(OutputPath)DynamoText.dll" DestinationFolder="$(PkgPath)\bin" />
+    <Copy SourceFiles="$(OutputPath)DynamoText.pdb" DestinationFolder="$(PkgPath)\bin"
+          Condition="Exists('$(OutputPath)DynamoText.pdb')" />
+
+    <!-- Dynamo customization -->
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\DynamoText_DynamoCustomization.xml"
+          DestinationFolder="$(PkgPath)\bin" />
+  </Target>
 
 </Project>

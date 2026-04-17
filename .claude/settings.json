@@ -10,6 +10,13 @@
         "repo": "DynamoDS/skills"
       },
       "autoUpdate": true
+    },
+    "dynamo-agent-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "DynamoDS/dynamo-agent-plugins"
+      },
+      "autoUpdate": true
     }
   }
 }

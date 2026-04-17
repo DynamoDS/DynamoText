@@ -1,16 +1,22 @@
 {
+  "enabledPlugins": {
+    "dynamo-skills@dynamo-skills": true,
+    "dynamo-dotnet@dynamo-agent-plugins": true
+  },
   "extraKnownMarketplaces": {
-    "dynamo-ds-skills": {
+    "dynamo-skills": {
       "source": {
         "source": "github",
-        "repo": "DynamoDs/skills"
+        "repo": "DynamoDS/skills"
+      },
+      "autoUpdate": true
+    },
+    "dynamo-agent-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "DynamoDS/dynamo-agent-plugins"
       },
       "autoUpdate": true
     }
-  },
-  "enabledPlugins": {
-    "dynamo-jira-ticket@dynamo-ds-skills": true,
-    "dynamo-pr-description@dynamo-ds-skills": true,
-    "dynamo-skill-writer@dynamo-ds-skills": true
   }
 }
